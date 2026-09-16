@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <h1 class="text-3xl font-extrabold text-center mb-2">Météo</h1>
+    <p class="text-center text-gray-500 mb-10">
+        Données météorologiques de Seattle (2012–2015)
+    </p>
+
+    <nav class="flex justify-center gap-4 mb-8">
+        <a href="/weather/temperatures" class="btn btn-sm btn-primary"
+            >Températures</a
+        >
+        <a href="/weather/types" class="btn btn-sm btn-secondary"
+            >Types de météo</a
+        >
+        <a href="/weather/precipitations" class="btn btn-sm btn-accent"
+            >Précipitations & Vent</a
+        >
+    </nav>
+
+    <p class="text-center text-gray-400 text-sm">
+        Sélectionne un graphique ci-dessus pour explorer les données.
+    </p>
+</Layout>

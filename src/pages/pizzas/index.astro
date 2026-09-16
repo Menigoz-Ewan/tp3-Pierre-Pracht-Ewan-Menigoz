@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <h1 class="text-3xl font-extrabold text-center mb-2">Pizzas</h1>
+    <p class="text-center text-gray-500 mb-10">
+        Analyse des ventes de pizzas en 2020
+    </p>
+
+    <nav class="flex justify-center gap-4 mb-8">
+        <a href="/pizzas/revenus" class="btn btn-sm btn-primary"
+            >Revenus par catégorie</a
+        >
+        <a href="/pizzas/jours" class="btn btn-sm btn-secondary"
+            >Commandes par jour</a
+        >
+        <a href="/pizzas/prix" class="btn btn-sm btn-accent"
+            >Prix vs Commandes</a
+        >
+    </nav>
+
+    <p class="text-center text-gray-400 text-sm">
+        Sélectionne un graphique ci-dessus pour explorer les données.
+    </p>
+</Layout>

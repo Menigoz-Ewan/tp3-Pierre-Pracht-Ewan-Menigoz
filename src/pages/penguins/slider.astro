@@ -1,0 +1,75 @@
+﻿---
+import Layout from "../../layouts/Layout.astro";
+import GraphicSpecies from "../../components/GraphicSpecies.astro";
+---
+
+<Layout>
+    <div class="breadcrumbs text-sm mb-6">
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/penguins">Pingouins</a></li>
+            <li>Slider</li>
+        </ul>
+    </div>
+
+    <h1 class="text-3xl font-extrabold text-center mb-8">
+        Graphiques par espèce
+    </h1>
+
+    <nav class="flex justify-center gap-4 mb-8">
+        <a href="#adelie" class="menu-item btn btn-primary">Adélie</a>
+        <a href="#gentoo" class="menu-item btn btn-secondary">Gentoo</a>
+        <a href="#chinstrap" class="menu-item btn btn-accent">Chinstrap</a>
+    </nav>
+
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-4">
+        <section id="adelie" class="item snap-center shrink-0 w-full">
+            <GraphicSpecies species="Adelie" />
+        </section>
+        <section id="gentoo" class="item snap-center shrink-0 w-full">
+            <GraphicSpecies species="Gentoo" />
+        </section>
+        <section id="chinstrap" class="item snap-center shrink-0 w-full">
+            <GraphicSpecies species="Chinstrap" />
+        </section>
+    </div>
+
+    <div class="divider my-8"></div>
+
+    <div class="flex justify-start">
+        <a href="/penguins/iles" class="btn btn-outline btn-sm">← Îles</a>
+    </div>
+</Layout>
+
+<script>
+    const menuItems = document.querySelectorAll(".menu-item");
+    const items = document.querySelectorAll(".item");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                const id = entry.target.getAttribute("id");
+                const menuItem = document.querySelector(
+                    `.menu-item[href="#${id}"]`,
+                );
+                if (entry.isIntersecting) {
+                    menuItem?.classList.add("active");
+                } else {
+                    menuItem?.classList.remove("active");
+                }
+            });
+        },
+        { threshold: 0.5 },
+    );
+
+    items.forEach((item) => {
+        observer.observe(item);
+    });
+</script>
+
+<style>
+    @reference "../../styles/global.css";
+    .menu-item.active {
+        @apply bg-primary text-primary-content outline-primary;
+    }
+</style>

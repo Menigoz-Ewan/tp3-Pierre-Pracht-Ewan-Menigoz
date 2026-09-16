@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+    <h1 class="text-3xl font-extrabold text-center mb-2">Pingouins</h1>
+    <p class="text-center text-gray-500 mb-10">
+        Analyse morphométrique des manchots de l'archipel de Palmer
+    </p>
+
+    <nav class="flex justify-center flex-wrap gap-4 mb-8">
+        <a href="/penguins/biometrie" class="btn btn-primary">Biométrie</a>
+        <a href="/penguins/especes" class="btn btn-secondary">Espèces</a>
+        <a href="/penguins/iles" class="btn btn-accent">Îles</a>
+        <a href="/penguins/slider" class="btn btn-neutral">Slider comparatif</a>
+    </nav>
+
+    <p class="text-center text-gray-400 text-sm">
+        Sélectionne un graphique ci-dessus pour explorer les données.
+    </p>
+</Layout>
