@@ -8,68 +8,50 @@ import GraphicSpecies from "../../components/GraphicSpecies.astro";
         <ul>
             <li><a href="/">Accueil</a></li>
             <li><a href="/penguins">Pingouins</a></li>
-            <li>Slider</li>
+            <li>Slider comparatif</li>
         </ul>
     </div>
 
-    <h1 class="text-3xl font-extrabold text-center mb-8">
-        Graphiques par espèce
+    <h1 class="text-center mb-8 text-3xl font-extrabold">
+        Comparateur des espèces
     </h1>
 
-    <nav class="flex justify-center gap-4 mb-8">
-        <a href="#adelie" class="menu-item btn btn-primary">Adélie</a>
-        <a href="#gentoo" class="menu-item btn btn-secondary">Gentoo</a>
-        <a href="#chinstrap" class="menu-item btn btn-accent">Chinstrap</a>
-    </nav>
-
-    <div class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-4">
-        <section id="adelie" class="item snap-center shrink-0 w-full">
-            <GraphicSpecies species="Adelie" />
-        </section>
-        <section id="gentoo" class="item snap-center shrink-0 w-full">
-            <GraphicSpecies species="Gentoo" />
-        </section>
-        <section id="chinstrap" class="item snap-center shrink-0 w-full">
-            <GraphicSpecies species="Chinstrap" />
-        </section>
+    <div
+        class="flex justify-center mb-12 sticky top-4 z-10 bg-base-100/80 p-2 rounded-box backdrop-blur-sm"
+    >
+        <select
+            id="species-slider"
+            class="select select-bordered select-secondary w-full max-w-xs text-lg"
+        >
+            <option disabled selected>Glisser vers une espèce</option>
+            <option value="adelie">Adélie</option>
+            <option value="gentoo">Gentoo</option>
+            <option value="chinstrap">Chinstrap</option>
+        </select>
     </div>
 
-    <div class="divider my-8"></div>
+    <div
+        class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-10 scroll-smooth"
+    >
+        <div id="adelie" class="item min-w-full snap-center">
+            <GraphicSpecies species="Adelie" />
+        </div>
 
-    <div class="flex justify-start">
-        <a href="/penguins/iles" class="btn btn-outline btn-sm">← Îles</a>
+        <div id="gentoo" class="item min-w-full snap-center">
+            <GraphicSpecies species="Gentoo" />
+        </div>
+
+        <div id="chinstrap" class="item min-w-full snap-center">
+            <GraphicSpecies species="Chinstrap" />
+        </div>
     </div>
 </Layout>
 
 <script>
-    const menuItems = document.querySelectorAll(".menu-item");
-    const items = document.querySelectorAll(".item");
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                const id = entry.target.getAttribute("id");
-                const menuItem = document.querySelector(
-                    `.menu-item[href="#${id}"]`,
-                );
-                if (entry.isIntersecting) {
-                    menuItem?.classList.add("active");
-                } else {
-                    menuItem?.classList.remove("active");
-                }
-            });
-        },
-        { threshold: 0.5 },
-    );
-
-    items.forEach((item) => {
-        observer.observe(item);
-    });
+    document
+        .querySelector("#species-slider")
+        ?.addEventListener("change", (evt) => {
+            const value = (evt.target as HTMLSelectElement).value;
+            location.hash = "#" + value;
+        });
 </script>
-
-<style>
-    @reference "../../styles/global.css";
-    .menu-item.active {
-        @apply bg-primary text-primary-content outline-primary;
-    }
-</style>
