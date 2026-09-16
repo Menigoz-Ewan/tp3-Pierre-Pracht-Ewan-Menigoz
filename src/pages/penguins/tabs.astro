@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import GraphicSpecies from "../../components/GraphicSpecies.astro";
+import {
+    Tabs,
+    TabsList,
+    TabsTab,
+    TabsPanel,
+} from "accessible-astro-components";
+---
+
+<Layout>
+    <div class="breadcrumbs text-sm mb-6">
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/penguins">Pingouins</a></li>
+            <li>Comparateur (Onglets)</li>
+        </ul>
+    </div>
+
+    <h1 class="text-center mb-8 text-3xl font-extrabold">
+        Comparateur des espèces
+    </h1>
+
+    <Tabs>
+        <TabsList class="flex justify-center gap-4 mb-12">
+            <TabsTab
+                id="tab-adelie"
+                controls="panel-adelie"
+                class="btn aria-selected:!bg-primary aria-selected:!border-primary aria-selected:!text-white"
+                selected
+            >
+                Adélie
+            </TabsTab>
+            <TabsTab
+                id="tab-gentoo"
+                controls="panel-gentoo"
+                class="btn aria-selected:!bg-secondary aria-selected:!border-secondary aria-selected:!text-white"
+            >
+                Gentoo
+            </TabsTab>
+            <TabsTab
+                id="tab-chinstrap"
+                controls="panel-chinstrap"
+                class="btn aria-selected:!bg-accent aria-selected:!border-accent aria-selected:!text-black"
+            >
+                Chinstrap
+            </TabsTab>
+        </TabsList>
+
+        <TabsPanel id="panel-adelie" labelledby="tab-adelie" selected>
+            <GraphicSpecies species="Adelie" />
+        </TabsPanel>
+
+        <TabsPanel id="panel-gentoo" labelledby="tab-gentoo">
+            <GraphicSpecies species="Gentoo" />
+        </TabsPanel>
+
+        <TabsPanel id="panel-chinstrap" labelledby="tab-chinstrap">
+            <GraphicSpecies species="Chinstrap" />
+        </TabsPanel>
+    </Tabs>
+</Layout>
