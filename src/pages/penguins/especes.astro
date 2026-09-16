@@ -40,16 +40,16 @@ const barOptions = {
 
     <h1 class="text-center mb-6 text-3xl font-extrabold">Espèces</h1>
 
-    <div class="flex justify-center gap-4 mb-8">
-        <a href="/penguins/species/Adelie" class="btn btn-sm btn-primary"
-            >Adélie</a
+    <div class="flex justify-center mb-12">
+        <select
+            id="species"
+            class="select select-bordered select-primary w-full max-w-xs text-lg"
         >
-        <a href="/penguins/species/Chinstrap" class="btn btn-sm btn-accent"
-            >Chinstrap</a
-        >
-        <a href="/penguins/species/Gentoo" class="btn btn-sm btn-secondary"
-            >Gentoo</a
-        >
+            <option disabled selected>Choisissez une espèce</option>
+            <option value="Adelie">Adélie</option>
+            <option value="Chinstrap">Chinstrap</option>
+            <option value="Gentoo">Gentoo</option>
+        </select>
     </div>
 
     <figure class="flex flex-col items-center gap-4">
@@ -73,3 +73,10 @@ const barOptions = {
         >
     </div>
 </Layout>
+
+<script>
+    document.querySelector("#species")?.addEventListener("change", (evt) => {
+        const value = (evt.target as HTMLSelectElement).value;
+        location.pathname = "/penguins/species/" + value + "/";
+    });
+</script>
