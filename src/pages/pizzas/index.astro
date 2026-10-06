@@ -20,6 +20,25 @@ import Layout from "../../layouts/Layout.astro";
         >
     </nav>
 
+    <div class="divider max-w-xl mx-auto text-sm opacity-50 my-6">
+        Nouveaux graphiques côté client (TP4)
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-4 mb-10">
+        <a href="/pizzas/simple" class="btn btn-sm btn-outline">1. Simple</a>
+        <a
+            href="/pizzas/simple-pizza"
+            class="btn btn-sm btn-outline btn-primary">2. Données simples</a
+        >
+        <a
+            href="/pizzas/pizza-filter"
+            class="btn btn-sm btn-outline btn-secondary">3. Filtre unique</a
+        >
+        <a href="/pizzas/pizza-multi" class="btn btn-sm btn-outline btn-accent"
+            >4. Multi-filtres</a
+        >
+    </nav>
+
     <p class="text-center text-gray-400 text-sm">
         Sélectionne un graphique ci-dessus pour explorer les données.
     </p>
